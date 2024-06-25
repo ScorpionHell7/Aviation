@@ -8,6 +8,12 @@
 <form method="POST" enctype="multipart/form-data" th:action="@{/api/upload/excel}">
     <input type="file" name="file" accept=".xlsx" />
     <button type="submit">Upload</button>
+
+    </li>
+    <li><a th:href="@{/pilots}" class="btn btn-style btn-style-2 mt-lg-0 mt-3">Validity less than 7</a>
+    </li>
+
+
 </form>
 
 

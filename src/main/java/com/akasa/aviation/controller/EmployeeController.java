@@ -15,7 +15,7 @@ public class EmployeeController {
 
     @GetMapping("/pilots")
     public String getAllEmployees(Model model) {
-        model.addAttribute("employees", personRepository.findByAgeGreaterThan(30));
+        model.addAttribute("pilots", personRepository.findBydaysremainingLessThan(7));
         return "pilotList.html"; // Thymeleaf template name (employee-list.html)
     }
 }

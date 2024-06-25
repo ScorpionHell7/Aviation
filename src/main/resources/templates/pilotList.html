@@ -17,10 +17,11 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="employee : ${employees}">
-        <td th:text="${employee.id}"></td>
-        <td th:text="${employee.name}"></td>
-        <td th:text="${employee.email}"></td>
+    <tr th:each="pilot : ${pilots}">
+        <td th:text="${pilot.crewname}"></td>
+        <td th:text="${pilot.qualificationcode}"></td>
+        <td th:text="${pilot.expirydate}"></td>
+        <td th:text="${pilot.daysremaining}"></td>
         <!-- Add more columns as needed -->
     </tr>
     </tbody>

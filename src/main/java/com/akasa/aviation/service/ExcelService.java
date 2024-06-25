@@ -12,10 +12,18 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-
+import java.io.InputStream;
+import java.time.LocalDate;
+//import java.sql.Date;
+import java.text.SimpleDateFormat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -55,7 +63,10 @@ public class ExcelService {
                     continue;
                 }
 
+//                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
                 Iterator<Cell> cellsInRow = currentRow.iterator();
+
                 Person person = new Person();
 
                 int cellIndex = 0;
@@ -64,13 +75,46 @@ public class ExcelService {
 
                     switch (cellIndex) {
                         case 0:
-                            person.setName(currentCell.getStringCellValue());
+                            person.setCrewname(currentCell.getStringCellValue());
                             break;
                         case 1:
-                            person.setAge((int) currentCell.getNumericCellValue());
+                            person.setStaffnumber(currentCell.getStringCellValue());
                             break;
                         case 2:
-                            person.setEmail(currentCell.getStringCellValue());
+                            person.setRanks(currentCell.getStringCellValue());
+                            break;
+                        case 3:
+                            person.setQualificationcode(currentCell.getStringCellValue());
+                            break;
+                        case 4:
+                            System.out.println(currentCell.getCellType());
+//                            String ex = currentCell.getStringCellValue();
+                            Date dateValue = (Date) currentCell.getDateCellValue();
+                            String formatteddate = dateFormat.format(dateValue);
+                            person.setExpirydate(formatteddate);
+
+
+                            break;
+                        case 5:
+                            System.out.println(currentCell.getCellType());
+                            Date dateValue1 = (Date) currentCell.getDateCellValue();
+                            String formatteddate1 = dateFormat.format(dateValue1);
+                            person.setToday(formatteddate1);
+
+                            break;
+                        case 6:
+                            System.out.println(currentCell.getCellType());
+                            double dataValue = (Double) currentCell.getNumericCellValue();
+                            person.setDaysremaining((int) dataValue);
+//                            if (currentCell.getCellType() == CellType.NUMERIC) {
+//                            person.setDaysremaining(Integer.parseInt(String.valueOf(currentCell.getNumericCellValue())));
+//                            }
+                            break;
+                        case 7:
+                            person.setStatus(currentCell.getStringCellValue());
+                            break;
+                        case 8:
+                            person.setPicforelease(currentCell.getStringCellValue());
                             break;
                         default:
                             break;

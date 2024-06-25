@@ -18,14 +18,14 @@ public class HomeController {
         return "index.html";
     }
 
-    @PostMapping("/test-save")
-    public ResponseEntity<String> testSave() {
-        Person person = new Person();
-        person.setName("Test User");
-        person.setAge(30);
-        person.setEmail("test@example.com");
-
-        personRepository.save(person);
-        return ResponseEntity.ok("Test user saved successfully.");
-    }
+//    @PostMapping("/test-save")
+//    public ResponseEntity<String> testSave() {
+//        Person person = new Person();
+//        person.setCrewname("Test User");
+//        person.setAge(30);
+//        person.setEmail("test@example.com");
+//
+//        personRepository.save(person);
+//        return ResponseEntity.ok("Test user saved successfully.");
+//    }
 }
